@@ -43,6 +43,8 @@ make clean
 ## 締め切りについて
 
 日付: 2026/02/07 (予定)
+
 予稿締切: 2026/\*/\* 
+
 [第19回つくばチャレンジシンポジウム](https://tsukubachallenge.jp/2025/about/symposium)
 
