@@ -1,4 +1,4 @@
-# tsukuba_symposium_2024
+# tsukuba_symposium_2025
 
 ## LaTeX install
 
@@ -9,8 +9,8 @@ sudo apt install texlive-lang-cjk xdvik-ja evince texlive-science texlive-fonts-
 ## ビルドの方法
 
 ```
-git clone https://github.com/CIT-Autonomous-Robot-Lab/tsukuba_symposium_2024.git
-cd tsukuba_symposium_2024
+git clone https://github.com/CIT-Autonomous-Robot-Lab/tsukuba_symposium_2025.git
+cd tsukuba_symposium_2025
 make
 ```
 
@@ -42,5 +42,7 @@ make clean
 
 ## 締め切りについて
 
-2025/1/31締切  
-[第18回つくばチャレンジシンポジウム](https://tsukubachallenge.jp/2024/about/symposium)
+日付: 2026/02/07 (予定)
+予稿締切: 2026/\*/\* 
+[第19回つくばチャレンジシンポジウム](https://tsukubachallenge.jp/2025/about/symposium)
+
