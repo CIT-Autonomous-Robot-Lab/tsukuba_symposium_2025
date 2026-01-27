@@ -28,10 +28,20 @@ miniPCではRaspberry Piからの
 その結果を使って経路計画を行う．
 Raspberry Pi と3D LiDARは，LANケーブルを介して接続するが，
 miniPCポートが足りないため，スイッチを使用している．
-実行されるノードとしては, 3D LiDARに関係するもの: 
+実行されるノードとしては, マップと3D LiDARに関係するもの: 
 \begin{itemize}
 	\item livox\_lidar\_publisher: Livox用のROS 2ドライバノード
-	\item pointcloud\_to\_laserscan: 3D LiDARのスキャンデータを2次元に圧縮してトピックとして配信するノード
+	% \item pointcloud\_to\_laserscan: 3D LiDARのスキャンデータを2次元に圧縮してトピックとして配信するノード
+	\item map\_manager: 複数の2次元マップと高さ範囲のパラメータを管理
+    \begin{itemize}
+      \item ロボットが指定した領域に進入すると, その領域に最適化された2次元マップと高さパラメータを提供
+    \end{itemize}
+    % \item pointcloud\_to\_dual\_scan: 3D LiDARのスキャンデータから以下の2種類の2次元スキャンデータを生成
+    \item pointcloud\_to\_laserscan: 3D LiDARのスキャンデータから以下の2種類の2次元スキャンデータを生成
+        \begin{itemize}
+          \item 障害物回避用のスキャンデータ
+          \item 自己位置推定用のスキャンデータ（map\_managerの指定する高さ範囲に基づく）
+        \end{itemize}
 \end{itemize}
 と, 自己位置推定とナビゲーションに関係するもの: 
 \begin{itemize}
@@ -41,10 +51,14 @@ miniPCポートが足りないため，スイッチを使用している．
 	\item simple\_waypointfollower: ゴールポーズを提供するノード
 \end{itemize}
 がある. 
+map\_managerは, 事前に作成した複数の2次元占有格子地図を保持している. 
+これらの地図は, 3D LiDARとIMUを統合したSLAM技術であるGLIM\cite{glim}\cite{glim_github}を用いて作成した3次元マップから, 
+必要な高さ領域を切り出して変換したものである. 
+切り出しにはpointcloud2pgm\_slicer\cite{pc2pgm_github}を用いた．
 
-走行する環境の地図は，GLIMで作成したものを
-高さ方向で切り出したものを使用した．
-切り出しにはpointcloud2pgm\_slicerを用いた．
+% 走行する環境の地図は，GLIMで作成したものを
+% 高さ方向で切り出したものを使用した．
+% 切り出しにはpointcloud2pgm\_slicerを用いた．
 
 %書き換える
 \begin{figure}[h]
