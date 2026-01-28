@@ -13,6 +13,16 @@
 
 Raspberry Piには, 車体制御のために, エンコーダと車輪駆動用のモータを接続した. 
 実行するノードとしては, 
+
+\begin{itemize} 
+\item urg\_node: レーザにより周囲の障害物との距離を測定し,スキャンデータとして配信. 
+
+\item raspimouse: ロボットの駆動制御を行う.また,エンコーダの代わりに,速度指令値(cmd\_vel)をオドメトリの情報(/odom)として配信する.
+
+\item map\_server: 事前に作成した環境地図を配信.
+
+\item emcl2: モンテカルロ自己位置推定（MCL）を実行するノード.
+\end{itemize}
 %something
 がある.  
 
