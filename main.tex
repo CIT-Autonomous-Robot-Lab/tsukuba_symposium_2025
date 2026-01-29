@@ -142,13 +142,24 @@ Raspberry Piでモータの制御など低レイヤーの処理を行い,
 \end{table}
 
 % 表でもいいかも
-センサ構成としては, 全チーム
-Raspberry Pi Cat標準のエンコーダを使用している. 
-LiDARには，むぎまるチームときなこチームは
-3D LiDAR（Livox Mid-360），
-しらたまチームは，2D LiDAR（Hokuyo UTM-30LX），
-むぎまるチームはさらに, アールティ社の 
-IMUセンサモジュール（RT-USB-9axisIMU2\cite{RTshopIMU}）を使用している．
+
+% センサ構成としては, 全チーム
+% Raspberry Pi Cat標準のエンコーダを使用している. 
+% LiDARには，むぎまるチームときなこチームは
+% 3D LiDAR（Livox Mid-360），
+% しらたまチームは，2D LiDAR（Hokuyo UTM-30LX），
+% むぎまるチームはさらに, アールティ社の 
+% IMUセンサモジュール（RT-USB-9axisIMU2\cite{RTshopIMU}）を使用している．
+
+全チームには, 外界センサとしてLiDARを搭載している. 
+むぎまるチームときなこチームは3D LiDAR（Livox Mid-360）, 
+しらたまチームは2D LiDAR（Hokuyo UTM-30LX）を使用している. 
+
+さらに, むぎまるチームときなこチームには, 内界センサに
+エンコーダとIMUを搭載している. 
+エンコーダには両チームともRaspberry Pi Cat標準のものを搭載している. 
+IMUについて, むぎまるチームはIMUセンサモジュール（RT-USB-9axisIMU2\cite{RTshopIMU}）, 
+きなこチームは3D LiDARに付属のもの（ICM-40609-D）を使用している. 
 
 ソフトウェアは, 
 全チームROS 2\cite{ROS 2}をベースに構築した. 
