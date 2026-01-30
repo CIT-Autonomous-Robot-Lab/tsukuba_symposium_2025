@@ -14,15 +14,18 @@
 \subsubsection{占有格子地図の圧縮}
 まず, 占有格子地図の圧縮を行う.
 今年のきなこチームの目標に関連して,
-ベクトル量子化による3次元占有格子地図の圧縮手法を提案している\cite{船井2026}.
-地図はGLIM\cite{glim}\cite{glim_github}を用いて3次元点群地図を作成し,
+ベクトル量子化による3次元占有格子地図の圧縮手法を
+当研究室から提案している\cite{船井2026}.
+地図はGLIMを用いて3次元点群地図を作成し,
 それを元に占有格子地図を生成した.
 その結果,
 つくばチャレンジの地図は表\ref{tab:3d_occupancy_grid_map}に示すように
 非常に大きい容量となった.
 30.9GBの地図は搭載したノートPCの計算機上で他ノードと共存させると
 メモリの圧迫, 地図のロード時間増大, 他のプログラムの動作遅延等を招く.
-また, Raspberry Pi 4上ですべてのプログラムを動作させることも想定しているため,
+また,
+Raspberry Pi 4上で
+ナビゲーションを含むすべてのプログラムを動作させる実験も行うため,
 メモリ上に展開できないサイズの地図は使用できない.
 そこで, ベクトル量子化を用いて地図の圧縮を行った.
 圧縮にはvq\_occupancy\_compressor\cite{vq_occupancy_compressor_github}を使用した.
@@ -44,8 +47,8 @@
   \end{tabular}
 \end{table}
 
-圧縮した結果, \ref{tab:compression_result}に示すように,
-地図容量は74.6MBとなり, 圧縮率は0.0024となった.
+圧縮した結果, 表\ref{tab:compression_result}に示すように,
+地図容量は74.6MBとなり, 圧縮率（圧縮後の地図容量を圧縮前の地図容量で割った値）は0.0024となった.
 これは, 搭載する計算機で十分に運用できる容量である.
 
 \begin{table}[tb]
@@ -65,10 +68,16 @@
 
 
 \subsubsection{開発したナビゲーションシステム}
-本チームでは, ナビゲーションに自作したkinako\_nav\cite{kinako_nav_github}を採用し,
-その中核としてFast Marching Method (FMM) に基づくvector\_field\_plannerを開発した.
-当初はnavigation2\cite{nav2}を採用し, グローバルプランナーにA*, ローカルプランナーにDWBを用いたが,
-つくばチャレンジのような動的障害物や対向ロボットが頻繁に交錯する実環境において, 以下の課題に直面した.
+本チームでは,
+ナビゲーションに自作したkinako\_nav\cite{kinako_nav_github}を採用し,
+その中核として
+Fast Marching Method (FMM)\cite{sethian1996, tsitsiklis1995}に基づく
+vector\_field\_plannerを開発した.
+当初はnavigation2\cite{nav2}を採用し, グローバルプランナーにA*\cite{hart1968},
+ローカルプランナーに
+DWB(dynamic window approach\cite{dwa}の評価関数を拡張したアルゴリズム)を用いたが,
+つくばチャレンジのような動的障害物や対向ロボットが頻繁に交錯する実環境において,
+以下の課題に直面した.
 \begin{itemize}
 \item 複雑なスタック構成により処理が重くなり, リアルタイムな軌道更新が困難
 \item 多数のプラグインとパラメータの相互依存により, 環境に対する最適なチューニングが困難
@@ -114,7 +123,7 @@ emcl2\_ros2を拡張した.
 \subsubsection{システム統合}
 きなこチームのシステム構成を
 図\ref{fig:kinako_system}, 図\ref{fig:kinako_nav}に示す.
-本研究で用いるナビゲーションシステムは,
+ナビゲーションシステムは,
 センサ処理, 自己位置推定, 障害物回避, 経路追従を
 ROS 2上で分担する分散システムである.
 ノート型PCが主計算機となり,
@@ -148,7 +157,7 @@ vector\_field\_plannerは地図, 障害物マスク, 目標地点, ロボット�
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=1.0\linewidth]{figs/kinako_system.eps}
+    \includegraphics[width=0.7\linewidth]{figs/kinako_system.eps}
     \caption{きなこチームのシステム構成}
     \label{fig:kinako_system}
   \end{center}
