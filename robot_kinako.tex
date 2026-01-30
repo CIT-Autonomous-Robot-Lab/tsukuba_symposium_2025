@@ -111,8 +111,13 @@ emcl2\_ros2を拡張した.
 人が多く地表付近の点群が遮蔽されやすい場所では地上から離れた高さの点群を使うなど,
 場所ごとに特徴的な高さの点群を使い分けられる.
 
-システムの開発のために以下のいくつかのパッケージを作成した.
 
+\subsubsection{システム統合}
+きなこチームのシステム構成を図\ref{fig:kinako_system}, 図\ref{fig:kinako_nav}に示す.
+本研究で用いる自律移動系は, センサ処理, 自己位置推定, 障害物回避, 経路追従をROS 2上で分担する分散システムである.
+ノート型PCが主計算機となり, 3D LiDARから点群とIMUの計測結果を取得する.
+
+次の6つのパッケージを作成した.
 \begin{itemize}
   \item imu\_rpy\_pose: IMUの角速度を積分し, 位置・姿勢を算出
   \item obstacle\_tracker: スキャンをクラスタリングして障害物マスクを生成
@@ -121,11 +126,6 @@ emcl2\_ros2を拡張した.
   \item vector\_field\_planner: ベクトル場でローカル速度指令を生成するプランナ
   \item velocity\_smoother: 速度指令を平滑化
 \end{itemize}
-
-\subsubsection{システム統合}
-きなこチームのシステム構成を図\ref{fig:kinako_system}, 図\ref{fig:kinako_nav}に示す.
-本研究で用いる自律移動系は, センサ処理, 自己位置推定, 障害物回避, 経路追従をROS 2上で分担する分散システムである.
-ノート型PCが主計算機となり, 3D LiDARから点群とIMUの計測結果を取得する.
 pointcloud2\_cutterは点群から必要な高さ領域を抽出し,
 自己位置推定に用いる点群と障害物検出に用いる2次元スキャンを生成する.
 imu\_rpy\_poseは角速度からyawを推定し,
