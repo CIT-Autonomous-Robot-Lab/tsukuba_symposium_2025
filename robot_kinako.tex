@@ -64,12 +64,9 @@
 \end{table}
 
 
-\subsubsection{開発したナビゲーションシステム}
-本チームでは,
-自己位置推定にemcl2\_ros2\cite{emcl2_ros2}を,
-ナビゲーションには自作したkinako\_nav\cite{kinako_nav_github}を採用した.
-
-当初, navigation2を採用していたが,
+\subsubsection{開発した経路計画手法}
+本チームは,経路計画に自作したvector\_field\_plannerを採用した.
+当初, navigation2のグローバルプランナーにA*、ローカルプランナーにDWBを採用していたが,
 つくばチャレンジのような動的障害物や対向ロボットが頻繁に交錯する実環境において, 以下の課題に直面した.
 \begin{itemize}
 \item 複雑なスタック構成により処理が重くなり, リアルタイムな軌道更新が困難
@@ -79,7 +76,7 @@
 \end{itemize}
 
 これらの課題を解決するため,
-Fast Marching Method (FMM) を用いたナビゲーションシステムを開発した.
+Fast Marching Method (FMM) を用いた経路計画手法を開発した.
 本システムは,
 LiDARの観測範囲全域を単一のポテンシャル場として計算するため,
 経路計画と障害物回避を単一の処理系で完結させることが可能となった.
@@ -95,7 +92,8 @@ LiDARが捉えた観測範囲全域の情報をリアルタイムにポテンシ
 不測の回避行動によって本来の予定進路から外れた場合でも,
 瞬時に現在地からの最適ルートを指し示すことができる.
 
-また, 圧縮した3次元地図を利用し, 自己位置推定の信頼性を向上させる目的で,
+\subsubsection{自己位置推定の拡張}
+圧縮した3次元地図を利用し, 自己位置推定の信頼性を向上させる目的で,
 emcl2\_ros2を拡張した.
 具体的には,
 圧縮地図の読み出し機能を追加し,
@@ -105,12 +103,12 @@ emcl2\_ros2を拡張した.
 推定する自由度は2次元（x, y, yaw）に制限した.
 
 さらに,
-3D LiDARの点群から高さ領域を指定して抽出し,
-走行中に使用する高さを切り替える機能を実装した.
+3D LiDARの3次元点群を高さ領域で抽出し、
+走行中に自己位置推定に利用する点群の高さを切り替えるpointcloud2\_cutterというパッケージを作成した。
 これにより,
-人が多く地表付近の点群が遮蔽されやすい場所では地上から離れた高さの点群を使うなど,
-場所ごとに特徴的な高さの点群を使い分けられる.
-
+人や車が多い地表付近の点群が遮蔽されやすい場所では地上から離れた高さの点群を使ったり、
+場所ごとにより特徴に富んだ高さの点群を使い分けたりすることで、
+自己位置推定の安定性の向上を図った.
 
 \subsubsection{システム統合}
 きなこチームのシステム構成を図\ref{fig:kinako_system}, 図\ref{fig:kinako_nav}に示す.
@@ -120,10 +118,10 @@ emcl2\_ros2を拡張した.
 次の6つのパッケージを作成した.
 \begin{itemize}
   \item imu\_rpy\_pose: IMUの角速度を積分し, 位置・姿勢を算出
-  \item obstacle\_tracker: スキャンをクラスタリングして障害物マスクを生成
-  \item pointcloud2\_cutter: 点群を高さ領域で切り出し, 自己位置推定用の点群と障害物検出用の2次元スキャンを生成
+  \item pointcloud2\_cutter: 自己位置推定に用いる点群と障害物検出用の2次元スキャンを生成
+  \item obstacle\_tracker: 2次元スキャンをクラスタリングして障害物マスクを生成
   \item waypoint\_manager: ウェイポイントの管理
-  \item vector\_field\_planner: ベクトル場でローカル速度指令を生成するプランナ
+  \item vector\_field\_planner: FMMで生成したベクトル場からローカル速度指令を生成
   \item velocity\_smoother: 速度指令を平滑化
 \end{itemize}
 pointcloud2\_cutterは点群から必要な高さ領域を抽出し,
@@ -133,9 +131,11 @@ imu\_rpy\_poseは角速度からyawを推定し,
 emcl2\_ros2は圧縮地図と点群,
 オドメトリを入力とし,
 ロボット姿勢を推定する.
-waypoint\_followerはmap\_serverから2次元占有格子地図を受信し,
+waypoint\_managerはmap\_serverから2次元占有格子地図を受信し,
 ウェイポイントに基づく目標地点を生成する.
-obstacle\_trackerは2次元スキャンをクラスタ化して障害物領域を推定し,
+obstacle\_trackerは2次元スキャンを
+Density-based spatial clustering of applications with noiseにより
+クラスタ化して障害物領域を推定し,
 占有領域としてマスクして出力する.
 vector\_field\_plannerは地図, 障害物マスク, 目標地点, ロボットの位置を入力として
 ロボットの速度指令値を計算する.
