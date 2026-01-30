@@ -21,7 +21,7 @@
 その結果,
 つくばチャレンジの地図は表\ref{tab:3d_occupancy_grid_map}に示すように
 非常に大きい容量となった.
-30.9GBの地図は搭載したノートPCの計算機上で他ノードと共存させると
+$30.9$GBの地図は搭載したノートPCの計算機上で他ノードと共存させると
 メモリの圧迫, 地図のロード時間増大, 他のプログラムの動作遅延等を招く.
 また,
 Raspberry Pi 4上で
@@ -38,17 +38,17 @@ Raspberry Pi 4上で
 	\begin{tabular}{lc}
 		\\
     \thline
-		地図容量           & 30.9GB \\
+		地図容量           & $30.9$GB \\
     \hline
-		実環境における規模 & 795.2$\times$523.6$\times$74.2m \\
+		実環境における規模 & $795.2\times523.6\times74.2$m \\
     \hline
-    解像度             & 0.1m/voxel \\
+    解像度             & $0.1$m/voxel \\
     \thline
   \end{tabular}
 \end{table}
 
 圧縮した結果, 表\ref{tab:compression_result}に示すように,
-地図容量は74.6MBとなり, 圧縮率（圧縮後の地図容量を圧縮前の地図容量で割った値）は0.0024となった.
+地図容量は$74.6$MBとなり, 圧縮率（圧縮後の地図容量を圧縮前の地図容量で割った値）は$0.0024$となった.
 これは, 搭載する計算機で十分に運用できる容量である.
 
 \begin{table}[tb]
@@ -59,9 +59,9 @@ Raspberry Pi 4上で
 	\begin{tabular}{lc}
 		\\
     \thline
-		圧縮地図の容量 & 74.6MB \\
+		圧縮地図の容量 & $74.6$MB \\
     \hline
-		圧縮率 & 0.0024 \\
+		圧縮率 & $0.0024$ \\
     \thline
   \end{tabular}
 \end{table}
@@ -148,7 +148,7 @@ emcl2\_ros2は圧縮地図と点群,
 waypoint\_managerはmap\_serverから2次元占有格子地図を受信し,
 ウェイポイントから次の目標地点を生成する.
 obstacle\_trackerは2次元スキャンを
-Density-based spatial clustering of applications with noiseにより
+Density-based spatial clustering of applications with noise (DBSCAN)\cite{dbscan}により
 クラスタ化して障害物領域を推定し,
 占有領域としてマスクして出力する.
 vector\_field\_plannerは地図, 障害物マスク, 目標地点, ロボットの位置を入力として

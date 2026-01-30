@@ -209,10 +209,10 @@ IMUについて, むぎまるチームはIMUセンサモジュール（RT-USB-9a
     むぎまるチーム & $88$ m    & 道を間違えリアイア \\
     \hline
 
-    きなこチーム　 & m    & \\
+    きなこチーム　 & $588$ m    & 一時停止位置において停止せず通過 \\
     \hline
 
-    しらたまチーム　 & 141 m    & 他チームの機体との衝突 \\
+    しらたまチーム　 & $141$ m    & 他チームの機体との衝突 \\
     \hline
   \end{tabular}
 \end{table}
@@ -351,7 +351,7 @@ ROS 2で移動ロボットを動かすための基礎知識の習得に取り組
 きなこチームは,
 ベクトル量子化により,
 大容量な3次元占有格子地図を圧縮し,
-30.9GBの地図を74.6MBまで削減した(圧縮率$0.0024$).
+$30.9$GBの地図を$74.6$MBまで削減した(圧縮率$0.0024$).
 また, 圧縮地図を用いた自己位置推定を行うため,
 emcl2\_ros2を拡張して3次元点群に対応させ,
 点群の高さを走行中に切り替えることで動的環境でのロバスト性を向上させた.
@@ -359,8 +359,8 @@ emcl2\_ros2を拡張して3次元点群に対応させ,
 観測範囲全域を単一のポテンシャル場として扱うことで,
 シンプルなシステムを実現しつつ,
 対向ロボットや歩行者に対して余裕を持った回避行動を可能にした.
-本走行では588mの走行を達成し,
-その後も走行を継続して852mまで到達したが,
+本走行では$588$mの走行を達成し,
+その後も走行を継続して$852$mまで到達したが,
 一時停止位置および信号機前で停止できずリタイアとなった.
 
 しらたまチームは,
@@ -580,6 +580,11 @@ ROS 2で移動ロボットにナビゲーションをさせる上で必要な要
   \bibitem{dwa}
 	D. Fox {\it et al.}: ``The dynamic window approach to collision avoidance,''
 	IEEE Robotics \& Automation Magazine, Vol.4, No.1, pp. 23-33, 1997.
+
+  \bibitem{dbscan}
+  M. Ester, H.-P. Kriegel, J{\"o}rg Sander, and X. Xu:
+  ``A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise,''
+  Proc. of the Second International Conference on Knowledge Discovery and Data Mining (KDD-96), pp. 226--231, 1996.
 
   \bibitem{slam_toolbox}
   SteveMacenski: ``SteveMacenski/slam\_toolbox,'' \url{https://github.com/SteveMacenski/slam_toolbox} (last visit: 2025-1-27).
