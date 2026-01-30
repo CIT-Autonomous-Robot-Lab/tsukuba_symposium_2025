@@ -271,7 +271,7 @@ IMUについて, むぎまるチームはIMUセンサモジュール（RT-USB-9a
 途中で推定が破綻する問題がある.
 この問題に対して, 本研究室では,
 global navigation satellite system（GNSS）を使用して
-自己位置推定の破綻を修復するアプローチを提案している\cite{吉越2024}\cite{吉越2025}.
+自己位置推定の破綻を修復するアプローチを提案している\cite{吉越2024, 吉越2025}.
 文献\cite{吉越2024}では, MCLの破綻後,
 ロボットが彷徨しながらGNSSの電波を正確に受信できる場所まで移動し,
 衛生測位の結果で破綻を修復する方法を提案した.
@@ -406,30 +406,12 @@ ROS 2で移動ロボットにナビゲーションをさせる上で必要な要
   Macenski, Steven {\it et al.}: ``Robot Operating System 2: Design, architecture, and uses in the wild,''
   Science Robotics, Vol. 7, No. 66, 2022.
 
-  \bibitem{emcl2_ros2}
-  Ryuichi Ueda: ``CIT-Autonomous-Robot-Lab/emcl2\_ros2,'' \url{https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2} (last visit: 2025-01-22).
+  \bibitem{value_iteration2}
+    Ryuichi Ueda: ``ryuichiueda/value\_iteration2,'' \url{https://github.com/ryuichiueda/value_iteration2} (last visit: 2025-01-30).
 
-  \bibitem{ueda2004iros}
-  Ryuichi Ueda {\it et al.}:
-  ``Expansion Resetting for Recovery from Fatal Error in Monte Carlo Localization -- Comparison with Sensor Resetting Methods,'' Proc．of IROS，pp.2481--2486，2004．
-
-  \bibitem{fox1999etal}
-  D. Fox {\it et al.}: ``Monte Carlo Localization: Efficient Position Estimation for Mobile Robots,''
-  Proc. of AAAI, pp. 343-349, 1999.
-
-  \bibitem{nav2}
-  ROS Planning: ``ros-planning/navigation2 (humble branch),'' \url{https://github.com/https://github.com/ros-planning/navigation2.git} (last visit: 2025-1-22).
-
-  \bibitem{slam_toolbox}
-  SteveMacenski: ``SteveMacenski/slam\_toolbox,'' \url{https://github.com/SteveMacenski/slam_toolbox} (last visit: 2025-1-27).
-
-  \bibitem{dijkstra}
-  E. W. Dijkstra : ``A Note on Two Problems in Connexion with Graphs,''
-  Numerische Mathematik, Vol. 1, pp. 269-271, 1959.
-
-  \bibitem{dwa}
-	D. Fox {\it et al.}: ``The dynamic window approach to collision avoidance,''
-	IEEE Robotics \& Automation Magazine, Vol.4, No.1, pp. 23-33, 1997.
+  \bibitem{ueda2023JRM}
+  R. Ueda, L. Tonouchi, T. Ikebe, and Y. Hayashibara: ``Implementation of Brute-Force Value Iteration for Mobile Robot Path Planning and Obstacle Bypassing,''
+  J. Robot. Mechatron., Vol.35, No.6, pp. 1489-1502, 2023.
 
   \bibitem{glim}
   Kenji Koide, Masashi Yokozuka, Shuji Oishi, and Atsuhiko Banno: ``GLIM: 3D Range-Inertial Localization and Mapping with GPU-Accelerated Scan Matching Factors,''
@@ -440,46 +422,6 @@ ROS 2で移動ロボットにナビゲーションをさせる上で必要な要
 
   \bibitem{pc2pgm_github}
     cafeline: ``cafeline/pointcloud2pgm\_slicer,'' \url{https://github.com/cafeline/pointcloud2pgm_slicer} (last visit: 2026-01-27).
-
-  \bibitem{vq_occupancy_compressor_github}
-    cafeline: ``cafeline/vq\_occupancy\_compressor\_slicer,'' \url{https://github.com/cafeline/vq_occupancy_compressor} (last visit: 2026-01-30).
-
-  \bibitem{kinako_nav_github}
-    cafeline: ``cafeline/kinako\_nav,'' \url{https://github.com/cafeline/kinako_nav} (last visit: 2026-01-30).
-
-  \bibitem{ueda2023JRM}
-  R. Ueda, L. Tonouchi, T. Ikebe, and Y. Hayashibara: ``Implementation of Brute-Force Value Iteration for Mobile Robot Path Planning and Obstacle Bypassing,''
-  J. Robot. Mechatron., Vol.35, No.6, pp. 1489-1502, 2023.
-
-  \bibitem{上田確率}
-    上田隆一: ``ロボットの確率・統計'', コロナ社, 2024
-
-  \bibitem{ikebe2023}
-    池邉龍宏, 林原靖男, 上田隆一: ``未知障害物によるモンテカルロ自己位置推定の破綻を防ぐための観測範囲の制限と選択'', 日本機械学会ロボティクス・メカトロニクス講演会2023講演論文集, 2A2-G06, 2023
-
-  \bibitem{value_iteration2}
-    Ryuichi Ueda: ``ryuichiueda/value\_iteration2,'' \url{https://github.com/ryuichiueda/value_iteration2} (last visit: 2025-01-30).
-
-  \bibitem{上田詳解}
-    上田隆一: ``詳解確率ロボティクス'', 講談社, 2019
-
-   \bibitem{中村2024}
-    中村啓太郎，登内リオン，永木悠暉，林原靖男，上田隆一: ``自律移動ロボットのための価値反復ベースの大域計画器におけるA*探索による暫定経路の算出''，第25回システムインテグレーション部門講演会(SI2024)，1F1-11，2024
-
-   \bibitem{中村2025}
-    中村啓太郎，林原靖男，上田隆一: ``自律移動ロボットのための価値反復と A*探索を組み合わせた大域経路計画 — 探索空間を 3 次元に拡張した A*との組み合わせの検討—''，第43回日本ロボット学会学術講演会(RSJ 2025)，3Q3-06，2025
-
-  \bibitem{吉越2024}
-	  吉越誠, 池邉龍宏, 林原靖男，上田隆一: ``LiDARによる自己位置推定が破綻した際のGNSS測位可能な場所への自律移動ロボットの誘導'', ロボティクス・メカトロニクス講演会2024, 1P1-M08, 2024
-
-  \bibitem{吉越2025}
-	  吉越誠, 林原靖男, 上田隆一: ``移動ロボットのための彷徨しながらの衛星測位によるLiDAR ベースの自己位置推定の破綻からの復帰法とナビゲーションの継続'', 第30回ロボティクスシンポジア, pp.107-112, 2025
-
-  \bibitem{船井2026}
-	  船井涼, 林原靖男, 上田隆一: ``移動ロボットの自己位置推定のためのベクトル量子化による3次元占有格子地図の圧縮'', 第31回ロボティクスシンポジア, 2026（to appear）
-
-    \bibitem{goto2018}
-	  H. Goto {\it et al.} ``Resetting Method using GNSS in LIDAR-based Probabilistic Self-Localization,`` Proc. of IEEE ROBIO, pp.1113-1118, 2018
 
   \bibitem{上田2019}
   上田 隆一: ``詳解確率ロボティクス'', 講談社, 2019.
@@ -577,11 +519,29 @@ ROS 2で移動ロボットにナビゲーションをさせる上で必要な要
   %池邉龍宏: ``自作ナビゲーションスタックでつくばチャレンジ2023に挑戦してみた話''，
   %\url{https://qiita.com/BEIKE/items/f3ff141cc25d49c01363} (last visit 2023-1-10).
 
+  \bibitem{船井2026}
+	  船井涼, 林原靖男, 上田隆一: ``移動ロボットの自己位置推定のためのベクトル量子化による3次元占有格子地図の圧縮'', 第31回ロボティクスシンポジア, 2026（to appear）
 
+  \bibitem{vq_occupancy_compressor_github}
+    cafeline: ``cafeline/vq\_occupancy\_compressor\_slicer,'' \url{https://github.com/cafeline/vq_occupancy_compressor} (last visit: 2026-01-30).
 
-  %\bibitem{hart1968}
-  %Peter E. Hart and Nils J. Nilsson and Bertram Raphael: ``A Formal Basis for the Heuristic Determination of Minimal Cost Paths,''
-  %IEEE Transactions on Systems Science and Cybernetics, Vol. 4, No.2, pp. 100-107, 1968.
+  \bibitem{kinako_nav_github}
+    cafeline: ``cafeline/kinako\_nav,'' \url{https://github.com/cafeline/kinako_nav} (last visit: 2026-01-30).
+
+  \bibitem{sethian1996}
+  J. A. Sethian: ``A Fast Marching Level Set Method for Monotonically Advancing Fronts,''
+  Proc. Natl. Acad. Sci. USA, Vol. 93, No. 4, pp. 1591--1595, 1996.
+
+  \bibitem{tsitsiklis1995}
+  J. N. Tsitsiklis: ``Efficient Algorithms for Globally Optimal Trajectories,''
+  IEEE Trans. Automatic Control, Vol. 40, No. 9, pp. 1528--1538, 1995.
+
+  \bibitem{nav2}
+  ROS Planning: ``ros-planning/navigation2 (humble branch),'' \url{https://github.com/https://github.com/ros-planning/navigation2.git} (last visit: 2025-1-22).
+
+  \bibitem{hart1968}
+  P. E. Hart, N. J. Nilsson, and B. Raphael: ``A Formal Basis for the Heuristic Determination of Minimum Cost Paths,''
+  IEEE Trans. Systems Science and Cybernetics, Vol. SSC-4, No. 2, pp. 100--107, 1968.
 
 
   %\bibitem{alberto2006}
@@ -611,6 +571,49 @@ ROS 2で移動ロボットにナビゲーションをさせる上で必要な要
   %池邉龍宏, 林原靖男, 上田隆一: ``未知障害物によるモンテカルロ自己位置推定の破綻を防ぐための観測範囲の制限と選択'',
   %日本機械学会ロボティクス・メカトロニクス講演会, 2A2-G06, 2023.
 
+
+  \bibitem{dwa}
+	D. Fox {\it et al.}: ``The dynamic window approach to collision avoidance,''
+	IEEE Robotics \& Automation Magazine, Vol.4, No.1, pp. 23-33, 1997.
+
+  \bibitem{slam_toolbox}
+  SteveMacenski: ``SteveMacenski/slam\_toolbox,'' \url{https://github.com/SteveMacenski/slam_toolbox} (last visit: 2025-1-27).
+
+   \bibitem{中村2024}
+    中村啓太郎，登内リオン，永木悠暉，林原靖男，上田隆一: ``自律移動ロボットのための価値反復ベースの大域計画器におけるA*探索による暫定経路の算出''，第25回システムインテグレーション部門講演会(SI2024)，1F1-11，2024
+
+   \bibitem{中村2025}
+    中村啓太郎，林原靖男，上田隆一: ``自律移動ロボットのための価値反復と A*探索を組み合わせた大域経路計画 — 探索空間を 3 次元に拡張した A*との組み合わせの検討—''，第43回日本ロボット学会学術講演会(RSJ 2025)，3Q3-06，2025
+
+  \bibitem{ikebe2023}
+    池邉龍宏, 林原靖男, 上田隆一: ``未知障害物によるモンテカルロ自己位置推定の破綻を防ぐための観測範囲の制限と選択'', 日本機械学会ロボティクス・メカトロニクス講演会2023講演論文集, 2A2-G06, 2023
+
+  \bibitem{吉越2024}
+	  吉越誠, 池邉龍宏, 林原靖男，上田隆一: ``LiDARによる自己位置推定が破綻した際のGNSS測位可能な場所への自律移動ロボットの誘導'', ロボティクス・メカトロニクス講演会2024, 1P1-M08, 2024
+
+  \bibitem{吉越2025}
+	  吉越誠, 林原靖男, 上田隆一: ``移動ロボットのための彷徨しながらの衛星測位によるLiDAR ベースの自己位置推定の破綻からの復帰法とナビゲーションの継続'', 第30回ロボティクスシンポジア, pp.107-112, 2025
+
+    \bibitem{goto2018}
+	  H. Goto {\it et al.} ``Resetting Method using GNSS in LIDAR-based Probabilistic Self-Localization,`` Proc. of IEEE ROBIO, pp.1113-1118, 2018
+
+  \bibitem{emcl2_ros2}
+  Ryuichi Ueda: ``CIT-Autonomous-Robot-Lab/emcl2\_ros2,'' \url{https://github.com/CIT-Autonomous-Robot-Lab/emcl2_ros2} (last visit: 2025-01-22).
+
+  \bibitem{ueda2004iros}
+  Ryuichi Ueda {\it et al.}:
+  ``Expansion Resetting for Recovery from Fatal Error in Monte Carlo Localization -- Comparison with Sensor Resetting Methods,'' Proc．of IROS，pp.2481--2486，2004．
+
+  \bibitem{fox1999etal}
+  D. Fox {\it et al.}: ``Monte Carlo Localization: Efficient Position Estimation for Mobile Robots,''
+  Proc. of AAAI, pp. 343-349, 1999.
+
+  \bibitem{dijkstra}
+  E. W. Dijkstra : ``A Note on Two Problems in Connexion with Graphs,''
+  Numerische Mathematik, Vol. 1, pp. 269-271, 1959.
+
+  \bibitem{上田確率}
+    上田隆一: ``ロボットの確率・統計'', コロナ社, 2024
 
 \end{thebibliography}
 \normalsize
