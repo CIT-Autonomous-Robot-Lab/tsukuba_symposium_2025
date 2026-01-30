@@ -30,13 +30,15 @@ Raspberry Pi 4上で
 そこで, ベクトル量子化を用いて地図の圧縮を行った.
 圧縮にはvq\_occupancy\_compressor\cite{vq_occupancy_compressor_github}を使用した.
 
-\begin{table}[tb]
+圧縮した結果, 表\ref{tab:compression_result}に示すように,
+地図容量は$74.6$MBとなり, 圧縮率（圧縮後の地図容量を圧縮前の地図容量で割った値）は$0.0024$となった.
+これは, 搭載する計算機で十分に運用できる容量である.
+
+\begin{table}[H]
   \centering
 	\caption{つくばチャレンジ2025環境の3次元占有格子地図}
   \label{tab:3d_occupancy_grid_map}
-  \small
-	\begin{tabular}{lc}
-		\\
+	  \begin{tabular}{|l|r|}
     \thline
 		地図容量           & $30.9$GB \\
     \hline
@@ -47,17 +49,11 @@ Raspberry Pi 4上で
   \end{tabular}
 \end{table}
 
-圧縮した結果, 表\ref{tab:compression_result}に示すように,
-地図容量は$74.6$MBとなり, 圧縮率（圧縮後の地図容量を圧縮前の地図容量で割った値）は$0.0024$となった.
-これは, 搭載する計算機で十分に運用できる容量である.
-
-\begin{table}[tb]
+\begin{table}[H]
   \centering
 	\caption{圧縮結果}
   \label{tab:compression_result}
-  \small
-	\begin{tabular}{lc}
-		\\
+	  \begin{tabular}{|l|r|}
     \thline
 		圧縮地図の容量 & $74.6$MB \\
     \hline
