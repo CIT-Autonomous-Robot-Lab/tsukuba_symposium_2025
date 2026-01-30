@@ -1,35 +1,35 @@
 \subsubsection{概要}
-むぎまるチームは1章で述べた目標のために, 
+むぎまるチームは1章で述べた目標のために,
 価値反復ROSパッケージ（value\_iteration2\cite{value_iteration2}）\cite{ueda2023JRM}と，
 ともに使用するナビゲーション用のパッケージを開発した．
 価値反復ROSパッケージでは，自己位置推定が十全に行えていることを前提としている．
 そのため，自己位置推定には，昨年度のつくばチャレンジで動いた実績のある
 きなこチームのものをそのまま用いている．
-% パッケージであるemcl2\_ros2\cite{emcl2_ros2}を使用した. 
+% パッケージであるemcl2\_ros2\cite{emcl2_ros2}を使用した.
 
 \subsubsection{システム構成}
 むぎまるチームでは，Raspberry Piでオドメトリと車体の制御，
 miniPCで自己位置推定と経路計画を行っている．
 ロボットに搭載した計算機, センサ, アクチュエータの接続の関係及び
 計算機で実行するROS 2ノードの概要を表したものを
-図\ref{fig:mugimaru_system}に示す. 
+図\ref{fig:mugimaru_system}に示す.
 
 Raspberry Piには, 車体制御のために, IMUとエンコーダ, 車輪駆動用のモータを繋ぎ，
 LANケーブルを用いてminiPCと接続している．
-実行するノードとしては, IMU用のROS 2ドライバノード（rt\_usb\_9axisimu\_driver）と, 
-オドメトリの出力とモータの制御を実施するノード（raspimouse）がある. 
+実行するノードとしては, IMU用のROS 2ドライバノード（rt\_usb\_9axisimu\_driver）と,
+オドメトリの出力とモータの制御を実施するノード（raspimouse）がある.
 後者のノードでは, エンコーダの値と
-前者のノードで配信されたIMUの情報からロボットのオドメトリを計算し, 
-トピックとして配信する. 
+前者のノードで配信されたIMUの情報からロボットのオドメトリを計算し,
+トピックとして配信する.
 モータの制御は, 外部のノードからトピックとして受信した
-ロボットの速度指令をもとに実行する. 
+ロボットの速度指令をもとに実行する.
 
 miniPCではRaspberry Piからの
 オドメトリと接続した3D LiDARの情報から自己位置推定を行い，
 その結果を使って経路計画を行う．
 Raspberry Pi と3D LiDARは，LANケーブルを介して接続するが，
 miniPCポートが足りないため，スイッチを使用している．
-実行されるノードとしては, マップと3D LiDARに関係するもの: 
+実行されるノードとしては, マップと3D LiDARに関係するもの:
 \begin{itemize}
 	\item livox\_lidar\_publisher: Livox用のROS 2ドライバノード
 	% \item pointcloud\_to\_laserscan: 3D LiDARのスキャンデータを2次元に圧縮してトピックとして配信するノード
@@ -44,17 +44,17 @@ miniPCポートが足りないため，スイッチを使用している．
           \item 自己位置推定用のスキャンデータ（map\_managerの指定する高さ範囲に基づく）
         \end{itemize}
 \end{itemize}
-と, 自己位置推定とナビゲーションに関係するもの: 
+と, 自己位置推定とナビゲーションに関係するもの:
 \begin{itemize}
 	\item emcl2\_ros2: 自己位置推定ノード（図中では「emcl2」と表記）
 	\item 船井さんのやーつ
 	\item value\_iteration2: 価値反復のノード
 	\item simple\_waypointfollower: ゴールポーズを提供するノード
 \end{itemize}
-がある. 
-map\_managerは, 事前に作成した複数の2次元占有格子地図を保持している. 
-これらの地図は, 3D LiDARとIMUを統合したSLAM技術であるGLIM\cite{glim}\cite{glim_github}を用いて作成した3次元マップから, 
-必要な高さ領域を切り出して変換したものである. 
+がある.
+map\_managerは, 事前に作成した複数の2次元占有格子地図を保持している.
+これらの地図は, 3D LiDARとIMUを統合したSLAM技術であるGLIM\cite{glim}\cite{glim_github}を用いて作成した3次元マップから,
+必要な高さ領域を切り出して変換したものである.
 切り出しにはpointcloud2pgm\_slicer\cite{pc2pgm_github}を用いた．
 
 % 走行する環境の地図は，GLIMで作成したものを
@@ -97,4 +97,4 @@ value\_iteration2では,
 62500mAh（200Wh）のバッテリーを消費しきる程度である．
 
 詳細な価値反復アルゴリズムの説明は,
-文献\cite{上田2019, 上田詳解}にある.
+文献\cite{上田2019}にある.
