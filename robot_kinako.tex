@@ -67,11 +67,11 @@ Raspberry Pi 4上で
 本チームでは,
 ナビゲーションに自作したkinako\_nav\cite{kinako_nav_github}を採用し,
 その中核として
-Fast Marching Method (FMM)\cite{sethian1996, tsitsiklis1995}に基づく
+Fast Marching Method（FMM）\cite{sethian1996, tsitsiklis1995}に基づく
 vector\_field\_plannerを開発した.
 当初はnavigation2\cite{nav2}を採用し, グローバルプランナーにA*\cite{hart1968},
 ローカルプランナーに
-DWB(dynamic window approach\cite{dwa}の評価関数を拡張したアルゴリズム)を用いたが,
+DWB（dynamic window approach\cite{dwa}の評価関数を拡張したアルゴリズム）を用いたが,
 つくばチャレンジのような動的障害物や対向ロボットが頻繁に交錯する実環境において,
 以下の課題に直面した.
 \begin{itemize}
