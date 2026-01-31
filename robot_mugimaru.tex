@@ -46,11 +46,12 @@ miniPCポートが足りないため，スイッチを使用している．
 \end{itemize}
 と, 自己位置推定とナビゲーションに関係するもの:
 \begin{itemize}
-	\item emcl2\_ros2: 自己位置推定ノード（図中では「emcl2」と表記）
+	\item emcl2\_ros2: MCLに膨張リセットを追加した自己位置推定のノード（図中では「emcl2」と表記）
 	\item value\_iteration2: 価値反復のノード
 	\item simple\_waypointfollower: ゴールポーズを提供するノード
 \end{itemize}
 がある.
+emcl2\_ros2は，上田研究室で開発，管理しているROS 2パッケージである．
 map\_managerは, 事前に作成した複数の2次元占有格子地図を保持している.
 これらの地図は, 3D LiDARとIMUを統合したSLAM技術であるGLIM\cite{glim}\cite{glim_github}を用いて作成した3次元マップから,
 必要な高さ領域を切り出して変換したものである.
