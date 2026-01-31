@@ -47,7 +47,6 @@ miniPCポートが足りないため，スイッチを使用している．
 と, 自己位置推定とナビゲーションに関係するもの:
 \begin{itemize}
 	\item emcl2\_ros2: 自己位置推定ノード（図中では「emcl2」と表記）
-	\item 船井さんのやーつ
 	\item value\_iteration2: 価値反復のノード
 	\item simple\_waypointfollower: ゴールポーズを提供するノード
 \end{itemize}
@@ -57,11 +56,7 @@ map\_managerは, 事前に作成した複数の2次元占有格子地図を保�
 必要な高さ領域を切り出して変換したものである.
 切り出しにはpointcloud2pgm\_slicer\cite{pc2pgm_github}を用いた．
 
-% 走行する環境の地図は，GLIMで作成したものを
-% 高さ方向で切り出したものを使用した．
-% 切り出しにはpointcloud2pgm\_slicerを用いた．
 
-%書き換える
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=1.0\linewidth]{figs/mugimaru_system.eps}
